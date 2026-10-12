@@ -23,12 +23,48 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/Equipments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/Equipments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/Equipments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/Equipments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXF1aXBtZW50c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/ProductionAreas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdGlvbkFyZWFzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/ProductionAreas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdGlvbkFyZWFzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/ProductionAreas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdGlvbkFyZWFzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/ProductionAreas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdGlvbkFyZWFzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/ProductionAreas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdGlvbkFyZWFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/Для учебы/Институт/Магистратура/Технологии разработки web-сервисов информационно-моделирующих систем в металлургии/Практическая №1/MetallurgyApp.Client/Views/Shared/Error.cshtml]
