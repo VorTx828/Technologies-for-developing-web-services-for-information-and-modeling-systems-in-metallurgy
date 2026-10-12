@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MetallurgyApp.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7de2ec02268f69103533bef150348e99d6dd8621")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b00e958348fb7efa231a0bee699f6b705effe89a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MetallurgyApp.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MetallurgyApp.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
