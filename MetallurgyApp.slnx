@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="MetallurgyApp.Api/MetallurgyApp.Api.csproj" />
+  <Project Path="MetallurgyApp.Client/MetallurgyApp.Client.csproj" />
   <Project Path="MetallurgyApp.Web/MetallurgyApp.Web.csproj" />
 </Solution>
