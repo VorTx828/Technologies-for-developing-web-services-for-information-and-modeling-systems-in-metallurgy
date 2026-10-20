@@ -1,0 +1,172 @@
+# ============================================
+# .NET / C# — универсальный .gitignore
+# Работает на любой глубине вложенности
+# ============================================
+
+# --- Build results ---
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+build/
+bld/
+[Oo]ut/
+[Oo]utput/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.VisualState.xml
+TestResult.xml
+nunit-results.xml
+*.trx
+
+# --- Visual Studio / Rider / VS Code ---
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.DotSettings.user
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.[Rr]e[Ss]harper.user
+
+# --- Rider / ReSharper ---
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/shelf/
+.idea/**/contentModel.xml
+.idea/**/dataSources/
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/gradle.xml
+.idea/**/libraries/
+*.sln.iml
+
+# --- NuGet ---
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.nuget/
+*.nuspec.bak
+
+# --- .NET Core / ASP.NET ---
+project.lock.json
+project.fragment.lock.json
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# --- Test / coverage ---
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
+*.trx
+*.CoverageResult.xml
+*.coverfilter
+*.coverage.*
+.copilot/
+TestResults/
+
+# --- Publish output ---
+publish/
+[Pp]ublish/
+*.pubxml
+*.pubxml.user
+*.publishproj
+*.publishsettings
+
+# --- Misc build / package ---
+*.cache
+*.pidb
+*.svclog
+*.log
+*.tlog
+*.binlog
+*.dll.config
+*.exe.config
+*.mdb
+*.opendb
+*.opensdf
+*.sdf
+*.sln.cache
+*.VC.db
+*.VC.VC.opendb
+
+# --- Installer / deploy ---
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.appx
+*.appxbundle
+*.msixbundle
+
+# --- OS files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# --- Env / secrets ---
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets
+secrets.*
+!.gitkeep
+
+# --- Node (если есть фронт в проекте) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+dist/
+.next/
+.nuxt/
+.cache/
+
+# --- Прочее ---
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.swp
+*.swo
+*~
