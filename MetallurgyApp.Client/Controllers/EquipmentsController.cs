@@ -68,8 +68,8 @@ public class EquipmentsController : Controller
 
     public async Task<IActionResult> Delete(int id)
     {
-        var e = await _api.GetEquipmentAsync(id);
-        return e is null ? NotFound() : View(e);
+        await _api.DeleteEquipmentAsync(id);
+        return RedirectToAction(nameof(Index));
     }
 
     [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
