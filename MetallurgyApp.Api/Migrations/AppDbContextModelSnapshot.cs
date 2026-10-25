@@ -77,6 +77,34 @@ namespace MetallurgyApp.Api.Migrations
                     b.ToTable("ProductionAreas");
                 });
 
+            modelBuilder.Entity("MetallurgyApp.Api.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("MetallurgyApp.Api.Models.Equipment", b =>
                 {
                     b.HasOne("MetallurgyApp.Api.Models.ProductionArea", "ProductionArea")

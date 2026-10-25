@@ -1,6 +1,4 @@
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 using MetallurgyApp.Client.Auth;
 using MetallurgyApp.Client.Models;
 using MetallurgyApp.Client.Services;
@@ -39,8 +37,10 @@ public class AccountController : Controller
         }
 
         await SignInWithTokenAsync(token);
+
         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
             return Redirect(returnUrl);
+
         return RedirectToAction("Index", "ProductionAreas");
     }
 
@@ -100,17 +100,11 @@ public class AccountController : Controller
                 Path = "/"
             });
 
-        var jwt = new JwtSecurityTokenHandler().ReadJwtToken(token.AccessToken);
-
         var claims = new List<Claim>
         {
             new(ClaimTypes.Name, token.UserName),
-            new(ClaimTypes.Role, token.Role.ToString()),
+            new(ClaimTypes.Role, token.Role.ToString())
         };
-        var sub = jwt.Claims.FirstOrDefault(c => c.Type is "sub"
-                                               or JwtRegisteredClaimNames.Sub)?.Value;
-        if (!string.IsNullOrEmpty(sub))
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, sub));
 
         var identity = new ClaimsIdentity(
             claims, CookieAuthenticationDefaults.AuthenticationScheme);

@@ -41,6 +41,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
+app.UseMiddleware<UnauthorizedApiHandlerMiddleware>();
 app.UseAuthorization();
 
 app.MapControllerRoute(
