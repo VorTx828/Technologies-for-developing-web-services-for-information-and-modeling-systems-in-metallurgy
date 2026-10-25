@@ -33,5 +33,16 @@ public static class DbSeeder
                 ManufactureYear = 2005, State = EquipmentState.Working, ProductionAreaId = areas[2].Id }
         );
         db.SaveChanges();
+
+        if (!db.Users.Any())
+        {
+            db.Users.Add(new User
+            {
+                UserName = "admin",
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin123!"),
+                Role = UserRole.Admin
+            });
+            db.SaveChanges();
+        }
     }
 }

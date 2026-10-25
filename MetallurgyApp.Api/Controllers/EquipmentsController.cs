@@ -1,5 +1,6 @@
 using MetallurgyApp.Api.Data;
 using MetallurgyApp.Api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,12 +8,14 @@ namespace MetallurgyApp.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize] 
 public class EquipmentsController : ControllerBase
 {
     private readonly AppDbContext _db;
     public EquipmentsController(AppDbContext db) => _db = db;
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<EquipmentDto>>> GetAll(
         string? search, EquipmentState? state, int? areaId)
     {
@@ -35,6 +38,7 @@ public class EquipmentsController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
+    [AllowAnonymous]
     public async Task<ActionResult<EquipmentDto>> Get(int id)
     {
         var e = await _db.Equipments.Include(x => x.ProductionArea)
@@ -51,6 +55,7 @@ public class EquipmentsController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "OperatorOrAdmin")] 
     public async Task<ActionResult<int>> Create(EquipmentCreateDto dto)
     {
         var e = new Equipment
@@ -65,6 +70,7 @@ public class EquipmentsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [Authorize(Policy = "OperatorOrAdmin")] 
     public async Task<IActionResult> Update(int id, EquipmentCreateDto dto)
     {
         var e = await _db.Equipments.FindAsync(id);
@@ -82,6 +88,7 @@ public class EquipmentsController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [Authorize(Policy = "OperatorOrAdmin")] 
     public async Task<IActionResult> Delete(int id)
     {
         var e = await _db.Equipments.FindAsync(id);

@@ -1,5 +1,6 @@
 using MetallurgyApp.Api.Data;
 using MetallurgyApp.Api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ public class ProductionAreasController : ControllerBase
     public ProductionAreasController(AppDbContext db) => _db = db;
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<ProductionAreaDto>>> GetAll(
         string? search, string? workshop)
     {
@@ -34,6 +36,7 @@ public class ProductionAreasController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
+    [AllowAnonymous]
     public async Task<ActionResult<ProductionAreaDto>> Get(int id)
     {
         var a = await _db.ProductionAreas.Include(x => x.Equipments)
@@ -55,6 +58,7 @@ public class ProductionAreasController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "OperatorOrAdmin")] 
     public async Task<ActionResult<int>> Create(ProductionAreaDto dto)
     {
         var a = new ProductionArea
@@ -68,6 +72,7 @@ public class ProductionAreasController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [Authorize(Policy = "OperatorOrAdmin")] 
     public async Task<IActionResult> Update(int id, ProductionAreaDto dto)
     {
         var a = await _db.ProductionAreas.FindAsync(id);
@@ -83,6 +88,7 @@ public class ProductionAreasController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [Authorize(Policy = "OperatorOrAdmin")] 
     public async Task<IActionResult> Delete(int id)
     {
         var a = await _db.ProductionAreas.FindAsync(id);

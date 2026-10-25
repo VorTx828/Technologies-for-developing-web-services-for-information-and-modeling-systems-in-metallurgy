@@ -10,6 +10,8 @@ public class AppDbContext : DbContext
     public DbSet<ProductionArea> ProductionAreas => Set<ProductionArea>();
     public DbSet<Equipment> Equipments => Set<Equipment>();
 
+    public DbSet<User> Users => Set<User>();
+
     protected override void OnModelCreating(ModelBuilder mb)
     {
         mb.Entity<ProductionArea>()
@@ -17,5 +19,9 @@ public class AppDbContext : DbContext
           .WithOne(e => e.ProductionArea)
           .HasForeignKey(e => e.ProductionAreaId)
           .OnDelete(DeleteBehavior.Cascade);
+
+        mb.Entity<User>()
+            .HasIndex(u => u.UserName)
+            .IsUnique();
     }
 }

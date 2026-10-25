@@ -1,11 +1,14 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MetallurgyApp.Client.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MetallurgyApp.Client.Controllers;
 
+
 public class HomeController : Controller
 {
+    [Authorize]
     public IActionResult Index()
     {
         return RedirectToAction("Index", "ProductionAreas");

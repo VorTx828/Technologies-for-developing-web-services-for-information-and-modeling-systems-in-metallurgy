@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Http.Json;
 using MetallurgyApp.Client.Models;
 
@@ -7,6 +8,32 @@ public class ApiClient
 {
     private readonly HttpClient _http;
     public ApiClient(HttpClient http) => _http = http;
+
+    public async Task<TokenResponseDto?> LoginAsync(LoginDto dto)
+    {
+        var r = await _http.PostAsJsonAsync("api/auth/login", dto);
+        if (r.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.BadRequest)
+            return null;
+        r.EnsureSuccessStatusCode();
+        return await r.Content.ReadFromJsonAsync<TokenResponseDto>();
+    }
+
+    public async Task<(bool Ok, string? Error)> RegisterAsync(RegisterDto dto)
+    {
+        var r = await _http.PostAsJsonAsync("api/auth/register", dto);
+        if (r.StatusCode == HttpStatusCode.Conflict)
+            return (false, "Пользователь с таким логином уже существует");
+        if (!r.IsSuccessStatusCode)
+            return (false, $"Ошибка регистрации: {(int)r.StatusCode}");
+        return (true, null);
+    }
+
+    public async Task<MeDto?> MeAsync()
+    {
+        var r = await _http.GetAsync("api/auth/me");
+        if (!r.IsSuccessStatusCode) return null;
+        return await r.Content.ReadFromJsonAsync<MeDto>();
+    }
 
     // Equipments
     public async Task<List<EquipmentDto>> GetEquipmentsAsync(
@@ -72,4 +99,12 @@ public class ApiClient
         var r = await _http.DeleteAsync($"api/productionareas/{id}");
         r.EnsureSuccessStatusCode();
     }
+}
+
+
+public class MeDto
+{
+    public int Id { get; set; }
+    public string UserName { get; set; } = string.Empty;
+    public string Role { get; set; } = string.Empty;
 }

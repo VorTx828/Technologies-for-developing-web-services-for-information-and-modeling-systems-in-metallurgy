@@ -1,10 +1,12 @@
 using MetallurgyApp.Client.Models;
 using MetallurgyApp.Client.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MetallurgyApp.Client.Controllers;
 
+[Authorize]
 public class EquipmentsController : Controller
 {
     private readonly ApiClient _api;
@@ -34,6 +36,7 @@ public class EquipmentsController : Controller
         return View(new EquipmentDto());
     }
 
+    [Authorize(Roles = "Admin,Operator")] 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(EquipmentDto dto)
     {
@@ -54,6 +57,7 @@ public class EquipmentsController : Controller
         return View(e);
     }
 
+    [Authorize(Roles = "Admin,Operator")]
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, EquipmentDto dto)
     {
@@ -72,6 +76,8 @@ public class EquipmentsController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+
+    [Authorize(Roles = "Admin,Operator")]
     [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
