@@ -6,7 +6,6 @@ using MetallurgyApp.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,13 +14,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSignalR();
 
-builder.Services.AddCors(o => o.AddPolicy("chat", p => p
-    .WithOrigins("https://localhost:5001")
+// ---------- ОДНА политика CORS ----------
+builder.Services.AddCors(o => o.AddPolicy("client", p => p
+    .WithOrigins(
+        "http://localhost:5265",
+        "https://localhost:5265",
+        "http://localhost:7100",
+        "https://localhost:7100")
     .AllowAnyHeader()
     .AllowAnyMethod()
     .AllowCredentials()));
-
-
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -88,9 +90,6 @@ builder.Services.AddAuthorization(o =>
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 
-builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
-    p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
-
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -102,10 +101,13 @@ using (var scope = app.Services.CreateScope())
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseCors();
+
+// ---------- ОДИН UseCors, ДО аутентификации ----------
+app.UseCors("client");
+
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors("chat");
+
 app.MapHub<ChatHub>("/hubs/chat");
 app.MapControllers();
 app.Run();

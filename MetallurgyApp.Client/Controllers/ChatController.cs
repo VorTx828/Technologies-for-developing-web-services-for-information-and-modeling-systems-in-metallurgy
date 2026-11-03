@@ -7,11 +7,20 @@ namespace MetallurgyApp.Client.Controllers;
 [Authorize]
 public class ChatController : Controller
 {
+    private readonly IConfiguration _config;
+    public ChatController(IConfiguration config) => _config = config;
+
     public IActionResult Index()
     {
         var token = Request.Cookies[AuthConstants.TokenCookieName];
-        ViewBag.AccessToken = token ?? string.Empty;
-        ViewBag.HubUrl = "https://localhost:7001/hubs/chat";
+        if (string.IsNullOrEmpty(token))
+            return RedirectToAction("Login", "Account");
+
+        ViewBag.AccessToken = token;
+
+        var baseUrl = _config["ApiBaseUrl"]?.TrimEnd('/') ?? "http://localhost:7100";
+        ViewBag.HubUrl = $"{baseUrl}/hubs/chat";
+
         return View();
     }
 }
