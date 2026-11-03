@@ -12,6 +12,8 @@ public class AppDbContext : DbContext
 
     public DbSet<User> Users => Set<User>();
 
+    public DbSet<ChatMessage> ChatMessages => Set<ChatMessage>();
+
     protected override void OnModelCreating(ModelBuilder mb)
     {
         mb.Entity<ProductionArea>()
@@ -23,5 +25,12 @@ public class AppDbContext : DbContext
         mb.Entity<User>()
             .HasIndex(u => u.UserName)
             .IsUnique();
+
+        mb.Entity<ChatMessage>(e =>
+        {
+            e.Property(m => m.UserName).IsRequired().HasMaxLength(100);
+            e.Property(m => m.Text).IsRequired().HasMaxLength(2000);
+            e.HasIndex(m => m.SentAt);
+        });
     }
 }

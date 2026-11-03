@@ -1,5 +1,6 @@
 using System.Text;
 using MetallurgyApp.Api.Data;
+using MetallurgyApp.Api.Hubs;
 using MetallurgyApp.Api.Models;
 using MetallurgyApp.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,6 +13,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSignalR();
+
+builder.Services.AddCors(o => o.AddPolicy("chat", p => p
+    .WithOrigins("https://localhost:5001")
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowCredentials()));
+
+
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -52,6 +62,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = key,
             ClockSkew = TimeSpan.FromSeconds(30)
         };
+
+        o.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["access_token"];
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) &&
+                    path.StartsWithSegments("/hubs/chat"))
+                {
+                    context.Token = accessToken;
+                }
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services.AddAuthorization(o =>
@@ -80,5 +105,7 @@ app.UseSwaggerUI();
 app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors("chat");
+app.MapHub<ChatHub>("/hubs/chat");
 app.MapControllers();
 app.Run();

@@ -29,6 +29,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Equipments" asp-action="Index">Оборудование</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Chat" asp-action="Index">Чат</a>
+                        </li>
                     </ul>
 
                     @if (User.Identity?.IsAuthenticated == true)
