@@ -28,6 +28,8 @@ public class AppDbContext : DbContext
 
         mb.Entity<ChatMessage>(e =>
         {
+            e.HasKey(m => m.Id);
+            e.Property(m => m.Id).ValueGeneratedNever();
             e.Property(m => m.UserName).IsRequired().HasMaxLength(100);
             e.Property(m => m.Text).IsRequired().HasMaxLength(2000);
             e.HasIndex(m => m.SentAt);

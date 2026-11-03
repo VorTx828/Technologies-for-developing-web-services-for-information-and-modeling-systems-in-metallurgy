@@ -17,10 +17,8 @@ public class ChatController : Controller
             return RedirectToAction("Login", "Account");
 
         ViewBag.AccessToken = token;
-
-        var baseUrl = _config["ApiBaseUrl"]?.TrimEnd('/') ?? "http://localhost:7100";
-        ViewBag.HubUrl = $"{baseUrl}/hubs/chat";
-
+        ViewBag.HubUrl = $"{(_config["ApiBaseUrl"]?.TrimEnd('/') ?? "http://localhost:7100")}/hubs/chat";
+        ViewBag.IsAdmin = User.IsInRole("Admin");
         return View();
     }
 }

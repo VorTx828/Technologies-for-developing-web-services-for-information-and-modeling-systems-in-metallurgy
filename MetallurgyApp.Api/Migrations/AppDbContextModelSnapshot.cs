@@ -19,9 +19,8 @@ namespace MetallurgyApp.Api.Migrations
 
             modelBuilder.Entity("MetallurgyApp.Api.Models.ChatMessage", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("SentAt")
                         .HasColumnType("TEXT");

@@ -30,6 +30,21 @@ public class ChatHub : Hub
             msg.Id, msg.UserName, msg.Text, msg.SentAt);
     }
 
+    public async Task DeleteMessage(Guid id)
+    {
+        if (!(Context.User?.IsInRole(nameof(UserRole.Admin)) ?? false))
+            throw new HubException("Недостаточно прав для удаления сообщения");
+
+        var msg = await _db.ChatMessages.FindAsync(id);
+        if (msg is null)
+            throw new HubException("Сообщение не найдено");
+
+        _db.ChatMessages.Remove(msg);
+        await _db.SaveChangesAsync();
+
+        await Clients.All.SendAsync("MessageDeleted", id);
+    }
+
     public async Task<IEnumerable<ChatMessage>> GetHistory(int count = 50)
     {
         if (count <= 0 || count > 200) count = 50;
@@ -40,4 +55,5 @@ public class ChatHub : Hub
             .AsNoTracking()
             .ToListAsync();
     }
+
 }
